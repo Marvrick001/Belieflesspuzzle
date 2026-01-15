@@ -1,21 +1,49 @@
-body {
-  background: #1e293b;
-  color: white;
-  font-family: 'Arial', sans-serif;
+/* ---------------- BODY & WRAPPER ---------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #0f0f0f;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
-  justify-content: center;
-  padding-top: 40px;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  overscroll-behavior: none;
+  color: white;
 }
 
-#game {
-  text-align: center;
+/* Prevent text selection */
+* {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
+/* Game wrapper */
+#game-wrapper {
+  display: flex;
+  flex-direction: column; /* stack preview + puzzle vertically */
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;   /* optional: scales on desktop */
+}
+
+/* ---------------- TIMER & SCORE ---------------- */
 #timer {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 15px;
 }
+
+#score {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* ---------------- PREVIEW BOX ---------------- */
 #preview-container {
   width: 140px;
   padding: 8px;
@@ -34,32 +62,35 @@ body {
 }
 
 #preview-image {
-  width: 120px;
-  height: 160px;
+  width: 100%;
+  aspect-ratio: 3 / 4;           /* keeps same puzzle ratio */
   background-size: cover;
   background-position: center;
   border-radius: 6px;
   border: 2px solid #444;
 }
 
+/* ---------------- PUZZLE GRID ---------------- */
 #puzzle {
-  width: 330px; 
-  height: 440px; 
+  width: 100%;
+  max-width: 330px;               /* desktop max width */
+  aspect-ratio: 3 / 4;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 4px;
   padding: 5px;
   border-radius: 16px;
-  background: #334155; 
+  background: #334155;
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
   border: 2px solid #64748b;
 }
 
+/* ---------------- PUZZLE TILES ---------------- */
 .tile {
   width: 100%;
   height: 100%;
-  background-size: 330px 440px; 
+  background-size: cover;
   border-radius: 8px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 1px 2px rgba(255,255,255,0.2);
   cursor: grab;
@@ -76,6 +107,7 @@ body {
   cursor: default;
 }
 
+/* ---------------- LEADERBOARD ---------------- */
 #leaderboard-overlay {
   position: fixed;
   inset: 0;
@@ -130,40 +162,18 @@ button {
 #quit-btn { background: #ef4444; }
 #quit-btn:hover { background: #dc2626; }
 
-#score {
-  font-size: 18px;
-  margin-top: 10px;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #0f0f0f;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+  #puzzle {
+    width: 90vw;     /* scales puzzle on small screens */
+  }
 
-#game-wrapper {
-  width: 100%;
-  max-width: 420px;      /* phone width */
-  height: 100vh;         /* full phone height */
-  margin: 0 auto;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-sizing: border-box;
-}
-#puzzle {
-  width: 100%;
-  aspect-ratio: 3 / 4;   /* SAME AS GAME */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 4px;
-}
-body {
-  overscroll-behavior: none;
-}
-* {
-  user-select: none;
-  -webkit-user-select: none;
+  #preview-container {
+    width: 90px;
+  }
+
+  .preview-title {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
 }
