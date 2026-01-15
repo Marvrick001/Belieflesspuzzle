@@ -7,8 +7,8 @@ html, body {
   background: #0f0f0f;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: center;     /* center vertically */
+  justify-content: center; 
+  align-items: center;     
   overscroll-behavior: none;
   color: white;
 }
@@ -22,13 +22,13 @@ html, body {
 /* Game wrapper */
 #game-wrapper {
   display: flex;
-  flex-direction: column; /* stack preview + puzzle vertically */
+  flex-direction: column;
   align-items: center;
   gap: 12px;
   padding: 12px;
   box-sizing: border-box;
   width: 100%;
-  max-width: 420px;   /* optional: scales on desktop */
+  max-width: 420px; /* scales on desktop */
 }
 
 /* ---------------- TIMER & SCORE ---------------- */
@@ -63,7 +63,7 @@ html, body {
 
 #preview-image {
   width: 100%;
-  aspect-ratio: 3 / 4;           /* keeps same puzzle ratio */
+  aspect-ratio: 3 / 4;           
   background-size: cover;
   background-position: center;
   border-radius: 6px;
@@ -73,7 +73,7 @@ html, body {
 /* ---------------- PUZZLE GRID ---------------- */
 #puzzle {
   width: 100%;
-  max-width: 330px;               /* desktop max width */
+  max-width: 330px;
   aspect-ratio: 3 / 4;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -95,9 +95,9 @@ html, body {
   cursor: grab;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  background-repeat: no-repeat;  /* important */
-  background-size: 100% 100%;    /* temporary fix, overridden by JS */
-  background-position: 0 0;      /* default */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;  /* overridden by JS dynamically */
+  background-position: 0 0;
 }
 
 .tile:active {
@@ -168,7 +168,7 @@ button {
 /* ---------------- RESPONSIVE ---------------- */
 @media (max-width: 768px) {
   #puzzle {
-    width: 90vw;     /* scales puzzle on small screens */
+    width: 90vw;     
   }
 
   #preview-container {
