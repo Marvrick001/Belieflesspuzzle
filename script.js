@@ -19,25 +19,30 @@ const image = images[Math.floor(Math.random() * images.length)];
  const preview = document.getElementById("preview-image");
  preview.style.backgroundImage = `url(${image})`;
 function createTiles() {
-  puzzle.innerHTML = "";
-  tiles = [];
-  for (let i = 0; i < totalTiles; i++) {
-    const tile = document.createElement("div");
-    tile.dataset.position = i;
-    if (i === emptyPos) {
-      tile.className = "tile empty";
-    } else {
-      tile.className = "tile";
-      const x = i % cols;
-      const y = Math.floor(i / cols);
-      tile.style.backgroundImage = `url(${image})`;
-      tile.style.backgroundPosition = `-${x * 100}px -${y * 100}px`;
-      tile.draggable = true;
+  puzzle.innerHTML = ""; // clear previous tiles
+
+  const tileWidth = puzzle.offsetWidth / 3;
+  const tileHeight = puzzle.offsetHeight / 4;
+
+  for (let row = 0; row < 4; row++) {
+    for (let col = 0; col < 3; col++) {
+      const tile = document.createElement("div");
+
+      // Last tile = empty
+      if (row === 3 && col === 2) {
+        tile.classList.add("tile", "empty");
+      } else {
+        tile.classList.add("tile");
+        tile.style.backgroundImage = url(${image});
+        tile.style.backgroundSize = ${puzzle.offsetWidth}px ${puzzle.offsetHeight}px;
+        tile.style.backgroundPosition = -${col * tileWidth}px -${row * tileHeight}px;
+      }
+
+      puzzle.appendChild(tile);
     }
-    tiles.push(tile);
   }
-  shuffleTiles();
 }
+
 
 function shuffleTiles() {
   do {
