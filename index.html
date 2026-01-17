@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>$Belifless</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Center the game-wrapper on the screen */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Full viewport height */
+      margin: 0;
+      background: #1e293b; /* Keep the existing background color */
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Ensure the game-wrapper is responsive */
+    #game-wrapper {
+      width: 100%;
+      max-width: 420px; /* Limit the width for larger screens */
+      padding: 12px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #0f172a; /* Optional: Add a background color for the game wrapper */
+      border-radius: 12px; /* Optional: Add rounded corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Optional: Add a shadow for depth */
+    }
+  </style>
+</head>
+<body>
+  <div id="game-wrapper">
+    <div id="preview-container">
+      <p class="preview-title">Preview</p>
+      <div id="preview-image"></div>
+    </div>
+
+    <div id="game">
+      <div id="timer">TIME 05:00</div>
+      <div id="puzzle"></div>
+      <div id="score">Score: 0</div>
+    </div>
+  </div>
+
+  <div id="leaderboard-overlay" class="hidden">
+    <div id="leaderboard">
+      <h2>🏆 Leaderboard</h2>
+      <ul id="leaderboard-list"></ul>
+      <div class="leaderboard-buttons">
+        <button id="restart-btn">🔁 Restart</button>
+        <button id="quit-btn">❌ Quit</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
